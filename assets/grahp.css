@@ -1,0 +1,122 @@
+#container_graph{
+    display: none;
+    flex-direction: column;
+    background: rgb(34, 34, 53);
+    padding: 20px;
+    width: 100%;
+    gap: 5px;
+}
+
+#graph_selection_menu{
+    display: flex;
+    gap: 5px;
+}
+
+#currency_selection_menu{
+    background: rgb(230, 229, 229);
+    font-size: 20px;
+    border-radius: 3px;
+    display: flex;
+    gap: 5px;
+    padding: 1px 10px;
+    align-items: center;
+}
+.currency_btn{
+    background: none;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 15px;
+    border: 1px solid transparent;
+}
+.currency_btn:hover{
+    border: 1px solid rgb(133, 126, 126);
+}
+
+#container_range_years{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#range_years{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* centrar slider */
+#range_years .rc-slider {
+    width: calc(100% + 50px);   /* 25px izquierda + 25px derecha */
+    margin-left: -25px;
+    margin-bottom: -25px;
+    margin-right: -25px;
+}
+
+
+#range_years .rc-slider-track {
+    background-color: rgb(58, 9, 255) !important;   /* Seleccionado */
+}
+/* Color del track seleccionado */
+#range_years .rc-slider-rail {
+    background-color: rgba(255, 255, 255, 0.855) !important;     /* Base */
+}
+/* Opcional: color del handle (el circulito que arrastras) */
+#range_years .rc-slider-handle {
+    border: solid 2px #000000 !important;
+    background-color: rgb(165, 70, 70) !important;
+}
+
+.button_range_years{
+    background: black;
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#container_playback_speed{
+    display: flex;
+    flex-direction: row;
+    background: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 5px;
+}
+#btn_playback_speed{
+    background: none;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+#slider_playback_speed{
+    width: 60px;
+    padding: 0px;
+}
+
+/* centrar slider */
+#slider_playback_speed .rc-slider {
+    width: calc(100% + 50px);   /* 25px izquierda + 25px derecha */
+    margin-left: -25px;
+    margin-bottom: -15px;
+}
+
+#slider_playback_speed .rc-slider-track {
+    background-color: rgb(255, 255, 255) !important;   /* Seleccionado */
+}
+
+/* Color del track seleccionado */
+#slider_playback_speed .rc-slider-rail {
+    background-color: rgba(82, 76, 76, 0.764) !important;     /* Base */
+}
+
+/* Opcional: color del handle (el circulito que arrastras) */
+#slider_playback_speed .rc-slider-handle {
+    border: solid 2px #000000 !important;
+    background-color: rgb(255, 255, 255) !important;
+}

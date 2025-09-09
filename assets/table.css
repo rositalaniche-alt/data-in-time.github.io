@@ -1,0 +1,15 @@
+#container_table{
+    display: none;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    background: rgb(34, 34, 53);
+    padding: 20px;
+    width: 100%;
+    gap: 5px;
+}
+
+.titule_table{
+    font-size: 20px;
+    padding: 10px;
+}
