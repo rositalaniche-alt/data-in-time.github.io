@@ -16,7 +16,7 @@ currencies_list = data['currency'].unique().to_list()
 # Years
 years_list = sorted(data['year'].unique().to_list())
 
-graph = html.Div(
+chart = html.Div(
     id='container_graph',
     children=[
         html.Div(
@@ -47,13 +47,13 @@ graph = html.Div(
                     id='dropdown_countries',
                     options=options,
                     value=['Colombia'],
-                    style={'width': '500px'},
+                    style={'width': '100%'},
                     multi=True,
                 ),
                 
             ]
         ),
-        dcc.Graph(id='graph'),
+        dcc.Graph(id='graph',),
         html.Div(
             id='container_range_years',
             children=[
@@ -110,6 +110,30 @@ graph = html.Div(
     ]
 )
 
+
+texto = '''
+This project compiles the historical values of the minimum wage for the period from 1980 to 2025, expressed in both U.S. dollars and the local currency.
+
+The minimum wage is defined as the legally mandated minimum compensation that employers are required to pay workers, intended to ensure the fulfillment of their basic needs and guarantee a decent standard of living.
+'''
+description = html.Div(
+    style={'width': '100%'},
+    children=[
+        html.P(
+            texto,
+            className='description',
+        )
+    ]
+
+)
+
+graph = html.Div(
+    style={'color': 'white', 'background': 'rgb(34, 34, 53)', 'display': 'flex', 'flex-direction': 'column', },
+    children=[
+        description,
+        chart,
+    ]
+)
 # ----------------------------------------------------------------------------------------------------------------------------------
 @callback(
     # Cambiar el estilo del boton seleccionado
