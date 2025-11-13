@@ -98,4 +98,4 @@ def update_button_selected(*inputs):
     return result
 
 if __name__ == '__main__':
-    app.run(port=8050, debug=True,)
+    app.run(port=8090)
