@@ -29,12 +29,6 @@ data = data.with_columns(
     })
 )
 
-column_defs = [
-    {"field": "country", "filter": "agSetColumnFilter"},
-    {"field": "currency", "filter": "agSetColumnFilter",},
-    {"field": "year", "filter": "agSetColumnFilter"},
-    {"field": "value", "filter": "agSetColumnFilter"},
-]
 
 table = html.Div(
     id='container_table',
@@ -48,6 +42,13 @@ table = html.Div(
 )
 
 '''
+column_defs = [
+    {"field": "country", "filter": "agSetColumnFilter"},
+    {"field": "currency", "filter": "agSetColumnFilter",},
+    {"field": "year", "filter": "agSetColumnFilter"},
+    {"field": "value", "filter": "agSetColumnFilter"},
+]
+
         dag.AgGrid(
             id='table',
             rowData=data.to_dicts(),
