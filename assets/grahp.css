@@ -10,7 +10,7 @@
     display: none;
     flex-direction: column;
     background: rgb(34, 34, 53);
-    padding: 20px;
+    padding: 50px;
     width: 100%;
     gap: 5px;
     box-sizing: border-box;
@@ -45,10 +45,12 @@
 }
 
 #container_range_years{
-    display: flex;
+    display: grid;
+    grid-template-columns: 5% 60% 5% 30%;
+    height: 10px;
+    justify-items: center;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 #range_years{
@@ -59,10 +61,7 @@
 }
 /* centrar slider */
 #range_years .rc-slider {
-    width: calc(100% + 50px);   /* 25px izquierda + 25px derecha */
-    margin-left: -15px;
     margin-bottom: -25px;
-    margin-right: -15px;
 }
 
 #range_years .rc-slider-track {
@@ -86,6 +85,8 @@
     font-size: 15px;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    height: 40px;
 }
 
 #container_playback_speed{

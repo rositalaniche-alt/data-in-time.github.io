@@ -1,9 +1,7 @@
 from table import *
 from dash import html, dcc, callback, ctx, no_update, Input, Output, State
 from dash.exceptions import PreventUpdate
-from plotly import graph_objects as go
 import plotly.express as px
-import dash_daq as daq
 
 # -----------------------------------------------------------------------------------------------------------------------------------------
 countries_list = sorted([country for country in data['country'].unique().to_list()])
@@ -96,12 +94,13 @@ chart = html.Div(
                             tooltip={"placement": "top"},
                         ),
                         html.Div(
-                            daq.ToggleSwitch(
+                            dcc.Checklist(
                                 id='loop_playback_speed',
-                                value=False,
-                                color="#4F57C2",
-                            ),
-                            title='Loop',
+                                options=[{'label': 'Loop', "value": 'loop'}],
+                                value=['loop'],
+                                inline=True,
+                                style={'display': 'flex'}
+                            )
                         ),
                     ]
                 ),
@@ -277,3 +276,12 @@ def update_states_playback(n_clicks, n_intervals, value_playback_speed, range_ye
     
     return btn_playback, disabled, updated_range_years, interval
 
+
+
+'''
+                            daq.ToggleSwitch(
+                                id='loop_playback_speed',
+                                value=False,
+                                color="#4F57C2",
+                            ),
+'''

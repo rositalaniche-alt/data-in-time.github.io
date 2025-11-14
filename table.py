@@ -1,5 +1,4 @@
 import polars as pl
-import dash_ag_grid as dag
 from dash import html, dcc
 # --------------------------------------------------------------------------------------------------------------
 
@@ -44,6 +43,11 @@ table = html.Div(
             children='Minimum Wages by Country: Global Data',
             className='titule_table',
         ),
+    
+    ]
+)
+
+'''
         dag.AgGrid(
             id='table',
             rowData=data.to_dicts(),
@@ -51,6 +55,4 @@ table = html.Div(
             className='ag-theme-alpine-dark',
             style={'width': '800px',}
         ),
-    ]
-)
-
+'''
