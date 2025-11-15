@@ -4,6 +4,8 @@ from dash.exceptions import PreventUpdate
 import plotly.express as px
 
 # -----------------------------------------------------------------------------------------------------------------------------------------
+#Lista de paises
+
 countries_list = sorted([country for country in data['country'].unique().to_list()])
 options =[
     {"label": country, "value": country}
@@ -36,7 +38,7 @@ chart = html.Div(
                         ],
                         dcc.Store(
                             id='store_currency',
-                            data={'currency': 'dollar'},
+                            data=['dollar'],
                             storage_type='session',
                         )
                     ]
@@ -109,7 +111,6 @@ chart = html.Div(
     ]
 )
 
-
 texto = '''
 This project compiles the historical values of the minimum wage for the period from 1980 to 2025, expressed in both U.S. dollars and the local currency.
 
@@ -123,7 +124,6 @@ description = html.Div(
             className='description',
         )
     ]
-
 )
 
 graph = html.Div(
@@ -133,6 +133,7 @@ graph = html.Div(
         chart,
     ]
 )
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 @callback(
     # Cambiar el estilo del boton seleccionado
@@ -165,7 +166,7 @@ def currencies_style_button(*inputs):
     print('Selected currency:', triggered)
     
     currencies_buttons_styles = [style_selected if currency == triggered else style_not_selected for currency in currencies_list] 
-    store_currency = [{'currency': triggered}]
+    store_currency = [triggered]
     result = currencies_buttons_styles + store_currency
     
     return result
@@ -178,23 +179,27 @@ def currencies_style_button(*inputs):
     Input('store_currency', 'data')
 )
 def update_graph(selected_countries, selected_years, selected_currency):
+    print(selected_currency)
     
-    selected_currency = selected_currency['currency']
-    
-    selected_years = [year for year in range(min(selected_years), max(selected_years) + 1, 1)]
+    # Crear lista de los anos seleccionados
+    selected_years = [year for year in range(min(selected_years), max(selected_years) + 1)]
     
     if not selected_countries:
         print('No country has been selected.')
         raise PreventUpdate
     
+    print(data)
+    
     # Obtener los paises seleccionados
     new_data = data.filter(pl.col('country').is_in(selected_countries))
+    
+    # Obtener los years
+    new_data = new_data.filter(pl.col('year').is_in(selected_years))
+    print('xxx', new_data)
     
     # Obtener el tipo de divisa
     new_data = new_data.filter(pl.col('currency') == selected_currency)
     
-    # Obtener los years
-    new_data = new_data.filter(pl.col('year').is_in(selected_years))
     
     fig = px.line(
         new_data,

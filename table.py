@@ -3,30 +3,9 @@ from dash import html, dcc
 # --------------------------------------------------------------------------------------------------------------
 
 # Obtenerdatos
-data = pl.read_csv('files/data_1.csv')
-column_name = {
-    "ref_area.label": "country",
-    "classif1.label": "currency",
-    "time": "year",
-    "obs_value": "value",
-}
-
-# Renombrar columnas
-data = data.rename(
-    column_name
-).select([
-    name for name in column_name.values()
-]).filter(
-    pl.col('currency') != 'Currency: 2021 PPP $'  
-)
-
-# Cambiar valores a mas cortos
-
+data = pl.read_excel('files/data_1.xlsx')
 data = data.with_columns(
-    pl.col("currency").replace({
-        "Currency: Local currency": "local",
-        "Currency: U.S. dollars": "dollar",
-    })
+    pl.col("value").cast(pl.Float64)
 )
 
 
@@ -37,7 +16,6 @@ table = html.Div(
             children='Minimum Wages by Country: Global Data',
             className='titule_table',
         ),
-    
     ]
 )
 
